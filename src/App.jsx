@@ -86,7 +86,7 @@ const App = () => {
   //Event Handler
   const renderPage = () => {
     if(page === "home"){
-      console.log("home page")
+      //We can pass the data using props OUTSIDE of the return statement of the Parent Component by using the map() method on our raw data (NOTE: make raw data an array to be able to use the map() method) - Then, inside the map() method return statement, we return the Child Component and pass to it the data via props
       return (homePage.map((element, index)=>{
         return <Home 
           key={index}
@@ -143,19 +143,10 @@ const App = () => {
   };
 
     
-
   return (
     <>
-      {/* <nav>
-        <button onClick={() => handlePage("home")}>Home</button>
-        <button onClick={() => handlePage("history")}>About Us</button>
-        <button onClick={() => handlePage("work")}>Past Work</button>
-        <button onClick={() => handlePage("staff")}>Staff</button>
-        <button onClick={() => handlePage("contact")}>Contact Us</button>
-        <button onClick={() => handlePage("links")}>Links</button>
-      </nav> */}
-
     <nav>
+      {/* Used the state setter function that will set the state value to a string we will use in our renderPage() function, so we can use it to compare value with the state variable "page" in our logic - The actual component that is rendered will be "returned" after the comparison of the string is matched, which will set the state variable to that unique component*/}
         <button onClick={() => setPage('home')}>Home</button>
         <button onClick={() => setPage("history")}>About Us</button>
         <button onClick={() => setPage("work")}>Past Work</button>
@@ -165,13 +156,8 @@ const App = () => {
       </nav>
 
       <div className='page-container'>
+        We are using the function with all the logic to dynamically render the componenet AFTER it matches the value of the string inside the setPage() function in the event handler with the state variable - In other words, each button here contains the string value we use in the renderPage() function to compare it to the state variable "page" and for each logical statement matching the string value, we render that assigned component
         {renderPage()}
-        {/* {homePage.map((element, index)=>{
-          return <Home 
-            key={index}
-            info={element}
-          />
-        })} */}
       </div>
     </>
   )
