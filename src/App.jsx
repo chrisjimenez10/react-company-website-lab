@@ -81,7 +81,7 @@ const links = [{
 //Component
 const App = () => {
   //State Variable
-  const [page, setPage] = useState("");
+  const [page, setPage] = useState("home");
 
   //Event Handler
   const renderPage = () => {
