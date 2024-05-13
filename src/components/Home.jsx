@@ -1,13 +1,14 @@
 
 
-const Home = (props) => {
-    const {info} = props;
-    console.log(info.title);
+const Home = ({info}) => {
+    // const {info} = props;
+    // console.log(info.title);
+    const {title, intro} = info;
 
     return (
         <>
-            <h1>{info.title}</h1>
-            <p>{info.intro}</p>
+            <h1>{title}</h1>
+            <p>{intro}</p>
             
         </>
     )
