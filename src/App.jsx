@@ -23,17 +23,17 @@ const companyHistory = [
 ];
 
 const pastWork = [{
-  projectName: "",
-  projectImg: "",
-  projectDesc: "",
+  projectName: "SkySpires Tower",
+  projectImg: "/images/rsz_construction-site1.jpg",
+  projectDesc: "SkySpires Tower is a towering marvel set to redefine the skyline of the bustling metropolis. As the city's latest landmark, this ambitious project combines cutting-edge design with state-of-the-art engineering to create a vertical oasis of urban living. With its sleek glass facade and panoramic views, SkySpires Tower promises residents an unparalleled lifestyle experience amidst the heartbeat of the city.",
 },{
-  projectName: "",
-  projectImg: "",
-  projectDesc: "",
+  projectName: "EcoHaven Estates",
+  projectImg: "/images/rsz_construction-site2.jpg",
+  projectDesc: " EcoHaven Estates is a groundbreaking residential development project situated amidst lush greenery and serene landscapes. Designed with sustainability at its core, this eco-friendly community aims to redefine modern living while preserving the natural environment. Featuring innovative green technologies and architectural brilliance, EcoHaven Estates offers residents a harmonious blend of luxury, comfort, and environmental responsibility.",
 },{
-  projectName: "",
-  projectImg: "",
-  projectDesc: "",
+  projectName: "Harbor Haven Marina",
+  projectImg: "/images/rsz_construction-site3.jpg",
+  projectDesc: "Harbor Haven Marina is a waterfront development project poised to become the premier destination for maritime enthusiasts and leisure seekers alike. Nestled along the picturesque coastline, this marina community offers a perfect blend of nautical charm and modern amenities. From luxury waterfront residences to vibrant dining and entertainment venues, Harbor Haven Marina sets the stage for a lifestyle of relaxation, recreation, and waterfront living at its finest.",
 }];
 
 const staff = [{
@@ -72,35 +72,64 @@ const links = ["google.com", "facebook.com", "linkedin.com",];
 //Component
 const App = () => {
   //State Variable
-  const [page, setPage] = useState(<Home />);
+  const [page, setPage] = useState("");
 
   //Event Handler
-  const handlePage = (page) => {
+  const renderPage = () => {
     if(page === "home"){
-      {homePage.map((element, index)=>{
+      console.log("home page")
+      return (homePage.map((element, index)=>{
         return <Home 
           key={index}
           info={element}
         />
-      })};
+      }));
+    }
 
-      setPage();
+    if(page === "history"){
+      return companyHistory.map((element, index)=>{
+        return <History 
+          key={index}
+          info={element}
+        />
+      })
+    }
+
+    if(page === "work"){
+      return pastWork.map((element, index)=>{
+        return <Work 
+        key={index}
+        info={element}
+        />
+      })
     }
 
   };
 
+    
+
   return (
     <>
-      <nav>
+      {/* <nav>
         <button onClick={() => handlePage("home")}>Home</button>
         <button onClick={() => handlePage("history")}>About Us</button>
         <button onClick={() => handlePage("work")}>Past Work</button>
         <button onClick={() => handlePage("staff")}>Staff</button>
         <button onClick={() => handlePage("contact")}>Contact Us</button>
         <button onClick={() => handlePage("links")}>Links</button>
+      </nav> */}
+
+    <nav>
+        <button onClick={() => setPage('home')}>Home</button>
+        <button onClick={() => setPage("history")}>About Us</button>
+        <button onClick={() => setPage("work")}>Past Work</button>
+        <button onClick={() => setPage("staff")}>Staff</button>
+        <button onClick={() => setPage("contact")}>Contact Us</button>
+        <button onClick={() => setPage("links")}>Links</button>
       </nav>
+
       <div className='page-container'>
-        {/* {page} */}
+        {renderPage()}
         {/* {homePage.map((element, index)=>{
           return <Home 
             key={index}
