@@ -61,13 +61,22 @@ const staff = [{
 const contactUs = [
   {
   message: "Thank you for your interest in Horizon Builders. Whether you have a question, need a quote, or want to discuss a potential project, we're here to help. Please feel free to reach out to us using the contact information provided below:",
-  address: "Horizon Builders - 123 Main Street, Cityville, State 12345, United States",
+  address: "Horizon Builders 123 Main Street, Cityville, State 12345, United States",
   phone: "(555) 123-4567",
   email: " info@horizonbuilders.com",
 },
 ];
 
-const links = ["google.com", "facebook.com", "linkedin.com",];
+const links = [{
+  title: "Google",
+  url: "https://www.google.com/"
+},{
+  title: "Facebook",
+  url: "https://www.facebook.com/"
+},{
+  title: "LinkedIn",
+  url: "https://www.linkedin.com/"
+}];
 
 //Component
 const App = () => {
@@ -100,6 +109,33 @@ const App = () => {
         return <Work 
         key={index}
         info={element}
+        />
+      })
+    }
+
+    if(page === "staff"){
+      return staff.map((element, index)=>{
+        return <Staff 
+        key={index}
+        info={element}
+        />
+      })
+    }
+
+    if(page === "contact"){
+      return contactUs.map((element, index)=>{
+        return <Contact 
+        key={index}
+        info={element}
+        />
+      })
+    }
+
+    if(page === "links"){
+      return links.map((element, index)=>{
+        return <Links 
+        key={index}
+        info={element}        
         />
       })
     }
